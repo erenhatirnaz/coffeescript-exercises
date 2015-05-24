@@ -1,0 +1,7 @@
+{
+  "name": "coffeescript-exercises",
+  "description": "I did this exercises while learning CoffeeScript.",
+  "author": "Eren Hatırnaz",
+  "license": "MIT",
+  "devDependencies": {}
+}
