@@ -3,5 +3,12 @@
   "description": "I did this exercises while learning CoffeeScript.",
   "author": "Eren Hatırnaz",
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "del": "^1.2.0",
+    "glob": "^5.0.9",
+    "gulp": "^3.8.11",
+    "gulp-coffee": "^2.3.1",
+    "gulp-file": "^0.2.0",
+    "gulp-markdown": "^1.0.0"
+  }
 }
