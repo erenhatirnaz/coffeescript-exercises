@@ -5,6 +5,8 @@ I did this exercises while learning CoffeeScript. I am using this book for Coffe
 Usage
 ======
 ```sh
+git clone https://github.com/erenhatirnaz/coffeescript-exercises.git
+cd coffeescript-exercises
 npm install
 gulp
 ```
