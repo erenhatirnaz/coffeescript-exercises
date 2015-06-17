@@ -1,4 +1,4 @@
-summation = (numbers) ->
+﻿summation = (numbers) ->
   result = 0
   numbers.forEach (n) -> result += n
   result
@@ -14,83 +14,51 @@ multiplication = (numbers) ->
   result
 
 division = (numbers) ->
-  numbers[0] / numbers[1]
+  result = numbers[0]
+  numbers[1..numbers.lenght].forEach (n) -> result /= n
+  result
+
+getNumbers = ->
+  numbers = []
+  Array::slice.call document.getElementsByTagName "input"
+    .forEach (number) -> numbers.push parseInt(number.value) if number.value and not isNaN parseInt(number.value)
+  numbers
 
 window.onload = ->
-  numbersDiv = document.createElement "div"
-  numbersDiv.setAttribute "id", "numbersDiv"
   numberCount = 2
 
-  for i in [1..2]
-    numberN = document.createElement "input"
-    numberN.setAttribute "type", "text"
-    numberN.setAttribute "id", "number#{i}"
-    numberN.setAttribute "placeholder", "Number #{i}"
-    numberN.setAttribute "style", "margin-bottom: 5px; display: block"
+  numbersDiv = document.querySelector "div#numbersDiv"
+  
+  btnInsertNumber = document.querySelector "button#btnInsertNumber"
+  btnInsertNumber.addEventListener "click", ->
+    newNumberCount = ++numberCount
+    txtNewNumber = document.createElement "input"
+    txtNewNumber.setAttribute "type", "text"
+    txtNewNumber.setAttribute "id", "number#{newNumberCount}"
+    txtNewNumber.setAttribute "placeholder", "Number #{newNumberCount}"
 
-    numbersDiv.appendChild numberN
+    numbersDiv.appendChild txtNewNumber
 
-  btnInsertNumber = document.createElement "button"
-  btnInsertNumber.innerText = "Insert Number"
-  btnInsertNumber.setAttribute "style", "margin-right: 3px;"
-  btnInsertNumber.addEventListener "click", (e) ->
-    newNumberCount = numberCount + 1
-    newNumberN = document.createElement "input"
-    newNumberN.setAttribute "type", "text"
-    newNumberN.setAttribute "id", "number#{newNumberCount}"
-    newNumberN.setAttribute "placeholder", "Number #{newNumberCount}"
-    newNumberN.setAttribute "style", "margin-bottom: 5px; display: block"
+  btnSummation = document.querySelector "button#btnSummation"
+  btnSummation.addEventListener "click", ->
+    numbers = getNumbers()    
 
-    numbersDiv.appendChild newNumberN
-    numberCount++;
+    alert "Result= " + summation numbers
 
-  btnSum = document.createElement "button"
-  btnSum.innerText = "+"
-  btnSum.addEventListener "click", ->
-    numbers = []
+  btnSubtraction = document.querySelector "button#btnSubtraction"
+  btnSubtraction.addEventListener "click", ->
+    numbers = getNumbers()
 
-    for i in [1..numberCount]
-      number = document.getElementById "number#{i}"
-      numbers.push parseInt(number.value) if number.value and not isNaN parseInt(number.value)
+    alert "Result= " + subtraction numbers
 
-    alert "Result=" + summation(numbers)
+  btnMultiplication = document.querySelector "button#btnMultiplication"
+  btnMultiplication.addEventListener "click", ->
+    numbers = getNumbers()
 
-  btnSubt = document.createElement "button"
-  btnSubt.innerText = "-"
-  btnSubt.addEventListener "click", ->
-    numbers = []
+    alert "Result= " + multiplication numbers
 
-    for i in [1..numberCount]
-      number = document.getElementById "number#{i}"
-      numbers.push parseInt(number.value) if number.value and not isNaN parseInt(number.value)
+  btnDivision = document.querySelector "button#btnDivision"
+  btnDivision.addEventListener "click", ->
+    numbers = getNumbers()
 
-    alert "Result=" + subtraction(numbers)
-
-  btnMultip = document.createElement "button"
-  btnMultip.innerText = "*"
-  btnMultip.addEventListener "click", ->
-    numbers = []
-
-    for i in [1..numberCount]
-      number = document.getElementById "number#{i}"
-      numbers.push parseInt(number.value) if number.value and not isNaN parseInt(number.value)
-
-    alert multiplication(numbers)
-
-  btnDivis = document.createElement "button"
-  btnDivis.innerText = "/"
-  btnDivis.addEventListener "click", ->
-    numbers = []
-
-    for i in [1..numberCount]
-      number = document.getElementById "number#{i}"
-      numbers.push parseInt(number.value) if number.value and not isNaN parseInt(number.value)
-
-    alert division(numbers)
-
-  document.body.appendChild numbersDiv
-  document.body.appendChild btnInsertNumber
-  document.body.appendChild btnSum
-  document.body.appendChild btnSubt
-  document.body.appendChild btnMultip
-  document.body.appendChild btnDivis
+    alert "Result= " + division numbers

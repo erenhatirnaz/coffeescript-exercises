@@ -21,19 +21,21 @@ gulp.task('coffee', function(){
 });
 
 gulp.task('html', ['coffee'], function(){
-	glob('exercise-*/*.coffee', function(er, files) {
+	gulp.src("exercise-*/*.html")
+			.pipe(gulp.dest("dist/")); // Copying .html files.
+
+	gulp.src("exercise-*/*.css")
+		.pipe(gulp.dest("dist/")); // Copying .css files.
+
+	gulp.src("exercise-*/*.md")
+		.pipe(markdown())
+		.pipe(gulp.dest('dist/')); // Converting readme.md to readme.html files.
+
+	glob('exercise-*/*.coffee', function(er, files) { // İndexing
 		var indexHtmlFileContent = "<h2>Exercises</h2><ul>";
-		
+
 		files.forEach(function(file, index){
 			var exerciseInfo = parseFileName(file);
-			
-			var exerciseHtmlFileContent = '<script type="text/javascript" src="' + exerciseInfo.fileName.replace(".coffee", ".js") + '"></script>';
-			gfile(exerciseInfo.fileName.replace(".coffee",".html"), exerciseHtmlFileContent)
-				.pipe(gulp.dest('dist/' + exerciseInfo.exerciseNumber))
-			
-			gulp.src("exercise-*/*.md")
-				.pipe(markdown())
-				.pipe(gulp.dest('dist/'));
 
 			var exerciseHtmlFile = exerciseInfo.exerciseNumber + '/' + exerciseInfo.fileName.replace(".coffee", ".html");
 			var exerciseReadmeHtmlFile = exerciseInfo.exerciseNumber + '/readme.html';
