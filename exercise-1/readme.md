@@ -15,3 +15,4 @@ Exercise 1
 * String Interpolation
 * Loops and Comprehensions
 * Arrays
+* Aliases and the Existential Operator
