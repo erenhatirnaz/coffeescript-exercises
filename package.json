@@ -3,7 +3,7 @@
   "description": "I did this exercises while learning CoffeeScript.",
   "author": "Eren Hatırnaz",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "del": "^1.2.0",
     "glob": "^5.0.9",
     "gulp": "^3.8.11",

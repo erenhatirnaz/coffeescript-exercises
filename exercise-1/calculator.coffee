@@ -20,45 +20,45 @@ division = (numbers) ->
 
 getNumbers = ->
   numbers = []
-  Array::slice.call document.getElementsByTagName "input"
-    .forEach (number) -> numbers.push parseInt(number.value) if number.value and not isNaN parseInt(number.value)
+  Array::slice.call(document.getElementsByTagName('input')).forEach (number) ->
+    numbers.push parseInt(number.value) if number.value and
+                                           not isNaN parseInt(number.value)
   numbers
 
-window.onload = ->
-  numberCount = 2
+numberCount = 2
 
-  numbersDiv = document.querySelector "div#numbersDiv"
-  
-  btnInsertNumber = document.querySelector "button#btnInsertNumber"
-  btnInsertNumber.addEventListener "click", ->
-    newNumberCount = ++numberCount
-    txtNewNumber = document.createElement "input"
-    txtNewNumber.setAttribute "type", "text"
-    txtNewNumber.setAttribute "id", "number#{newNumberCount}"
-    txtNewNumber.setAttribute "placeholder", "Number #{newNumberCount}"
+numbersDiv = document.getElementById 'numbersDiv'
 
-    numbersDiv.appendChild txtNewNumber
+btnInsertNumber = document.getElementById 'btnInsertNumber'
+btnInsertNumber.addEventListener 'click', ->
+  newNumberCount = ++numberCount
+  txtNewNumber = document.createElement 'input'
+  txtNewNumber.setAttribute 'type', 'text'
+  txtNewNumber.setAttribute 'id', "number#{newNumberCount}"
+  txtNewNumber.setAttribute 'placeholder', "Number #{newNumberCount}"
 
-  btnSummation = document.querySelector "button#btnSummation"
-  btnSummation.addEventListener "click", ->
-    numbers = getNumbers()    
+  numbersDiv.appendChild txtNewNumber
 
-    alert "Result= " + summation numbers
+btnSummation = document.getElementById 'btnSummation'
+btnSummation.addEventListener 'click', ->
+  numbers = getNumbers()
 
-  btnSubtraction = document.querySelector "button#btnSubtraction"
-  btnSubtraction.addEventListener "click", ->
-    numbers = getNumbers()
+  alert "Result: #{summation(numbers)}"
 
-    alert "Result= " + subtraction numbers
+btnSubtraction = document.getElementById 'btnSubtraction'
+btnSubtraction.addEventListener 'click', ->
+  numbers = getNumbers()
 
-  btnMultiplication = document.querySelector "button#btnMultiplication"
-  btnMultiplication.addEventListener "click", ->
-    numbers = getNumbers()
+  alert "Result: #{subtraction(numbers)}"
 
-    alert "Result= " + multiplication numbers
+btnMultiplication = document.getElementById 'btnMultiplication'
+btnMultiplication.addEventListener 'click', ->
+  numbers = getNumbers()
 
-  btnDivision = document.querySelector "button#btnDivision"
-  btnDivision.addEventListener "click", ->
-    numbers = getNumbers()
+  alert "Result: #{multiplication(numbers)}"
 
-    alert "Result= " + division numbers
+btnDivision = document.getElementById 'btnDivision'
+btnDivision.addEventListener 'click', ->
+  numbers = getNumbers()
+
+  alert "Result: #{division(numbers)}"
