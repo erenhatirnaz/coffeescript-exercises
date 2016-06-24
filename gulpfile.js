@@ -16,7 +16,7 @@ var parseFileName = function (file) {
 
 gulp.task('coffee', function () {
   gulp.src('exercise-*/*.coffee')
-    .pipe(coffee())
+    .pipe(coffee({ bare: true }))
     .pipe(gulp.dest('dist'))
 })
 
