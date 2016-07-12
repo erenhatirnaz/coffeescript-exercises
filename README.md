@@ -1,5 +1,5 @@
 # CoffeScript Exercises
-I did these exercises while learning CoffeeScript. I am using this book for
+I did these exercises while learning CoffeeScript. I'm using this book for
 CoffeScript learning: [The Little Book on CoffeeScript](https://www.goodreads.com/book/show/13506289-the-little-book-on-coffeescript).
 
 # Usage
@@ -7,6 +7,5 @@ CoffeScript learning: [The Little Book on CoffeeScript](https://www.goodreads.co
 git clone https://github.com/erenhatirnaz/coffeescript-exercises.git
 cd coffeescript-exercises
 npm install
-gulp
+npm test
 ```
-and open `dist/index.html` to your favorite browser.
