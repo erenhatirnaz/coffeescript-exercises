@@ -9,6 +9,7 @@
   "dependencies": {
     "chai": "^3.5.0",
     "coffee-script": "^1.10.0",
+    "lokijs": "^1.4.1",
     "mocha": "^2.5.3"
   }
 }
