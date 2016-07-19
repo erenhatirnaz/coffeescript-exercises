@@ -9,3 +9,7 @@ cd coffeescript-exercises
 npm install
 npm test
 ```
+
+# Exercises
+* [Exercise 1: Basic Calculator](exercise-1/)
+* [Exercise 2: Advanced Bank System](exercise-2/)
